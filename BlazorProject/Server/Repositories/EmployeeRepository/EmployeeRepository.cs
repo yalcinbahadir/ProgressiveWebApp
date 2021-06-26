@@ -19,6 +19,10 @@ namespace BlazorProject.Server.Repositories.EmployeeRepository
 
         public async Task<Employee> AddEmployee(Employee employee)
         {
+            if (employee.Department !=null)
+            {
+                _context.Entry(employee.Department).State = EntityState.Unchanged;
+            }
             var result= await _context.Employee.AddAsync(employee);
             await _context.SaveChangesAsync();
             return result.Entity;
@@ -77,15 +81,20 @@ namespace BlazorProject.Server.Repositories.EmployeeRepository
             {
                 empToUpdate.FirstName = employee.FirstName;
                 empToUpdate.LastName = employee.LastName;
-                empToUpdate.DateOfBrith = employee.DateOfBrith;
-                empToUpdate.DepartmentId = employee.DepartmentId;
+                empToUpdate.DateOfBrith = employee.DateOfBrith;             
                 empToUpdate.Gender = employee.Gender;
                 empToUpdate.Email = employee.Email;
+                if (employee.DepartmentId !=0)
+                {
+                    empToUpdate.DepartmentId = employee.DepartmentId;
+                } else if (employee.Department !=null)
+                {
+                    empToUpdate.DepartmentId = employee.Department.DepartmentId;
+                }
                 empToUpdate.PhotoPath = employee.PhotoPath;
-
-                var result = _context.Employee.Update(employee).Entity;
+                // var result = _context.Employee.Update(employee).Entity;
                 await _context.SaveChangesAsync();
-                return result;
+                return empToUpdate;
             }
 
 

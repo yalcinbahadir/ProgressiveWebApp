@@ -9,10 +9,12 @@ using System.Threading.Tasks;
 
 namespace BlazorProject.Server
 {
+    //NDYzNzc3QDMxMzkyZTMxMmUzMEQ1a3ZTa2VmWGJEaTd5VTA1TjhsUGsrV1F0VWVBQUR3SC9CK0FBdUJCMEU9
     public class Program
     {
         public static void Main(string[] args)
         {
+          
             CreateHostBuilder(args).Build().Run();
         }
 
