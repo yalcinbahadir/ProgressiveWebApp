@@ -19,7 +19,7 @@ namespace BlazorProject.Client
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NDYzNzc3QDMxMzkyZTMxMmUzMEQ1a3ZTa2VmWGJEaTd5VTA1TjhsUGsrV1F0VWVBQUR3SC9CK0FBdUJCMEU9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("key");
             builder.Services.AddSyncfusionBlazor();
             await builder.Build().RunAsync();
         }
